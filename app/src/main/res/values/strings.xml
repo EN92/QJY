@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">倾角仪</string>
+
+    <!-- 顶部状态 -->
+    <string name="status_uncalibrated">未校准</string>
+    <string name="status_measuring">测量中</string>
+    <string name="status_paused">暂停</string>
+    <string name="status_calibrating">校准中… 保持水平放置</string>
+    <string name="status_calibrated">校准完成 ✓</string>
+    <string name="status_reset">已重置</string>
+    <string name="status_no_sensor">无传感器</string>
+    <string name="status_level">水平 ✓</string>
+    <string name="status_micro_tilt">微倾</string>
+    <string name="status_tilting">倾斜中</string>
+    <string name="status_large_angle">大角度</string>
+    <string name="status_reliable">传感器不可靠</string>
+    <string name="status_accuracy_low">精度低</string>
+    <!-- 按钮文字 -->
+    <string name="btn_calibrate">校准</string>
+    <string name="btn_cancel">取消</string>
+    <string name="btn_reset">重置</string>
+    <string name="btn_zero">置零</string>
+    <string name="btn_clear_zero">清除置零</string>
+    <string name="btn_hold">保持</string>
+    <string name="btn_release">释放</string>
+    <string name="btn_vibrate_on">震动已开</string>
+    <string name="btn_vibrate_off">震动已关</string>
+    <string name="btn_night_mode">夜间</string>
+    <string name="btn_day_mode">日间</string>
+
+    <!-- 标签 -->
+    <string name="label_combined">合倾斜角度</string>
+    <string name="label_pitch">俯仰</string>
+    <string name="label_roll">横滚</string>
+    <string name="label_delta_prefix">相对参考面: </string>
+    <string name="direction_level">— 平</string>
+    <string name="direction_pitch_up">↑ 前倾</string>
+    <string name="direction_pitch_down">↓ 后倾</string>
+    <string name="direction_roll_right">→ 右倾</string>
+    <string name="direction_roll_left">← 左倾</string>
+
+    <!-- 对话框 -->
+    <string name="dialog_guide_title">手机放置方向说明</string>
+    <string name="dialog_guide_message">将手机屏幕朝上水平放置。\n\n・俯仰（橙色）：手机顶部抬起/落下 → 前后倾斜\n・横滚（绿色）：手机右侧抬起/落下 → 左右倾斜\n\n仪表盘上方为"前"，右侧为"右"。\n可点击「校准」按钮消除传感器偏差。</string>
+    <string name="dialog_guide_ok">知道了</string>
+    <string name="dialog_calibrate_fail_title">校准失败</string>
+    <string name="dialog_calibrate_fail_message">设备抖动过大（波动±%.1f°）。\n请将手机平稳放置后再试。</string>
+    <string name="dialog_ok">好的</string>
+
+    <!-- Toast -->
+    <string name="toast_no_sensor">此设备不支持加速度传感器</string>
+    <string name="toast_calibrate_cancelled">校准已取消</string>
+    <string name="toast_calibrate_done">校准完成 (俯仰%.2f°, 横滚%.2f°)</string>
+    <string name="toast_reset">校准已重置</string>
+    <string name="toast_reference_set">参考面已设置</string>
+    <string name="toast_reference_cleared">参考面已清除</string>
+    <string name="toast_hold">读数已锁定</string>
+    <string name="toast_release">读数已释放</string>
+
+    <!-- 单位 -->
+    <string name="unit_degree">度</string>
+    <string name="unit_radian">弧度</string>
+    <string name="unit_grade">坡%%</string>
+
+    <!-- TTS / 其他 -->
+    <string name="tts_level">已水平</string>
+    <string name="tts_on">语音播报已开启</string>
+    <string name="tts_off">语音播报已关闭</string>
+    <string name="status_hold_suffix"> 🔒</string>
+    <string name="status_delta_suffix"> (相对)</string>
+    <string name="slope_prefix">坡度 </string>
+    <string name="slope_ratio"> (1:%s)</string>
+    <string name="slope_level">坡度 0.0%% (1:\u221E)</string>
+    <string name="delta_prefix">Δ </string>
+
+    <!-- 锦上添花 -->
+    <string name="btn_share">分享</string>
+    <string name="btn_lock">锁定</string>
+    <string name="btn_unlock">解锁</string>
+    <string name="share_subject">倾角仪测量结果</string>
+    <string name="share_body">合倾斜角度: %s\n俯仰: %s\n横滚: %s\n坡度: %s\n测量时间: %s</string>
+    <string name="snap_format">✓ %d°</string>
+
+    <!-- 优化 -->
+    <string name="toast_no_share_app">未找到可分享的应用</string>
+    <string name="calibration_format">校准中 %d/%d</string>
+</resources>

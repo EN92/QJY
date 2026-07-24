@@ -1,0 +1,400 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <LinearLayout
+        android:id="@+id/topBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:paddingHorizontal="12dp"
+        android:paddingVertical="8dp"
+        android:background="#16213E"
+        android:orientation="vertical"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/app_name"
+                android:textColor="#FFFFFF"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvStatus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/status_uncalibrated"
+                android:textColor="#80FFFFFF"
+                android:textSize="12sp"
+                android:layout_marginEnd="8dp"
+                android:maxLines="1"
+                android:ellipsize="end"
+                android:maxWidth="120dp" />
+
+            <Button
+                android:id="@+id/btnCalibrate"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:text="@string/btn_calibrate"
+                android:textSize="11sp"
+                android:textColor="#FFFFFF"
+                android:backgroundTint="#4CAF50"
+                android:minWidth="0dp"
+                android:paddingHorizontal="10dp"
+                android:contentDescription="@string/btn_calibrate"
+                style="@style/Widget.AppCompat.Button.Colored" />
+
+            <Button
+                android:id="@+id/btnReset"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:text="@string/btn_reset"
+                android:textSize="11sp"
+                android:textColor="#FFFFFF"
+                android:backgroundTint="#FF5252"
+                android:minWidth="0dp"
+                android:paddingHorizontal="10dp"
+                android:layout_marginStart="4dp"
+                android:contentDescription="@string/btn_reset"
+                style="@style/Widget.AppCompat.Button.Colored" />
+        </LinearLayout>
+
+        <ProgressBar
+            android:id="@+id/progressCalibration"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="match_parent"
+            android:layout_height="4dp"
+            android:layout_marginTop="4dp"
+            android:visibility="gone"
+            android:progressTint="#4CAF50"
+            android:progressBackgroundTint="#333333" />
+
+        <TextView
+            android:id="@+id/tvCalibrationCount"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="#80FFFFFF"
+            android:textSize="10sp"
+            android:gravity="center"
+            android:visibility="gone" />
+    </LinearLayout>
+
+    <!-- 功能按钮行1: 置零 / 保持 / 单位 -->
+    <LinearLayout
+        android:id="@+id/layoutControls"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:paddingVertical="4dp"
+        android:paddingHorizontal="12dp"
+        app:layout_constraintTop_toBottomOf="@id/topBar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <Button
+            android:id="@+id/btnDelta"
+            android:layout_width="wrap_content"
+            android:layout_height="28dp"
+            android:text="@string/btn_zero"
+            android:textSize="11sp"
+            android:textColor="#FFFFFF"
+            android:backgroundTint="#2196F3"
+            android:minWidth="0dp"
+            android:paddingHorizontal="14dp"
+            android:contentDescription="@string/btn_zero"
+            style="@style/Widget.AppCompat.Button.Colored" />
+
+        <Button
+            android:id="@+id/btnHold"
+            android:layout_width="wrap_content"
+            android:layout_height="28dp"
+            android:text="@string/btn_hold"
+            android:textSize="11sp"
+            android:textColor="#FFFFFF"
+            android:backgroundTint="#9C27B0"
+            android:minWidth="0dp"
+            android:paddingHorizontal="14dp"
+            android:layout_marginStart="6dp"
+            android:contentDescription="@string/btn_hold"
+            style="@style/Widget.AppCompat.Button.Colored" />
+
+        <Button
+            android:id="@+id/btnUnit"
+            android:layout_width="wrap_content"
+            android:layout_height="28dp"
+            android:text="@string/unit_degree"
+            android:textSize="11sp"
+            android:textColor="#FFFFFF"
+            android:backgroundTint="#607D8B"
+            android:minWidth="0dp"
+            android:paddingHorizontal="14dp"
+            android:layout_marginStart="6dp"
+            android:contentDescription="切换单位"
+            style="@style/Widget.AppCompat.Button.Colored" />
+    </LinearLayout>
+
+    <!-- 功能按钮行2: 震动开关 / 夜间模式 / 锁定 / 分享 -->
+    <LinearLayout
+        android:id="@+id/layoutVibrateToggle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:paddingVertical="2dp"
+        android:paddingHorizontal="8dp"
+        app:layout_constraintTop_toBottomOf="@id/layoutControls"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <Button
+            android:id="@+id/btnVibrate"
+            android:layout_width="0dp"
+            android:layout_height="26dp"
+            android:layout_weight="1"
+            android:text="@string/btn_vibrate_on"
+            android:textSize="10sp"
+            android:textColor="#FFFFFF"
+            android:backgroundTint="#4CAF50"
+            android:minWidth="0dp"
+            android:paddingHorizontal="6dp"
+            android:layout_marginEnd="4dp"
+            android:contentDescription="@string/btn_vibrate_on"
+            style="@style/Widget.AppCompat.Button.Colored" />
+
+        <Button
+            android:id="@+id/btnNightMode"
+            android:layout_width="0dp"
+            android:layout_height="26dp"
+            android:layout_weight="1"
+            android:text="@string/btn_night_mode"
+            android:textSize="10sp"
+            android:textColor="#FFFFFF"
+            android:backgroundTint="#555555"
+            android:minWidth="0dp"
+            android:paddingHorizontal="6dp"
+            android:layout_marginEnd="4dp"
+            android:contentDescription="@string/btn_night_mode"
+            style="@style/Widget.AppCompat.Button.Colored" />
+
+        <Button
+            android:id="@+id/btnLockOrientation"
+            android:layout_width="0dp"
+            android:layout_height="26dp"
+            android:layout_weight="1"
+            android:text="@string/btn_lock"
+            android:textSize="10sp"
+            android:textColor="#FFFFFF"
+            android:backgroundTint="#795548"
+            android:minWidth="0dp"
+            android:paddingHorizontal="6dp"
+            android:layout_marginEnd="4dp"
+            android:contentDescription="@string/btn_lock"
+            style="@style/Widget.AppCompat.Button.Colored" />
+
+        <Button
+            android:id="@+id/btnShare"
+            android:layout_width="0dp"
+            android:layout_height="26dp"
+            android:layout_weight="1"
+            android:text="@string/btn_share"
+            android:textSize="10sp"
+            android:textColor="#FFFFFF"
+            android:backgroundTint="#3F51B5"
+            android:minWidth="0dp"
+            android:paddingHorizontal="6dp"
+            android:contentDescription="@string/btn_share"
+            style="@style/Widget.AppCompat.Button.Colored" />
+    </LinearLayout>
+
+    <!-- 仪表盘 -->
+    <com.example.inclinometer.InclinometerView
+        android:id="@+id/inclinometerView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toBottomOf="@id/layoutVibrateToggle"
+        app:layout_constraintBottom_toTopOf="@id/panelInfo"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintDimensionRatio="1:1"
+        android:layout_marginHorizontal="32dp"
+        android:layout_marginVertical="4dp" />
+
+    <!-- 信息面板 -->
+    <LinearLayout
+        android:id="@+id/panelInfo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingHorizontal="20dp"
+        android:paddingBottom="12dp"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <!-- 合倾斜角 + 坡度 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/label_combined"
+                android:textColor="#88FFFFFF"
+                android:textSize="11sp"
+                android:gravity="center"
+                android:layout_marginBottom="2dp" />
+
+            <TextView
+                android:id="@+id/tvCombined"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="0.0°"
+                android:textColor="#FFFFFF"
+                android:textSize="28sp"
+                android:textStyle="bold"
+                android:gravity="center" />
+
+            <TextView
+                android:id="@+id/tvSlope"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/slope_level"
+                android:textColor="#4FC3F7"
+                android:textSize="13sp"
+                android:gravity="center"
+                android:layout_marginBottom="6dp" />
+
+            <!-- 吸附角度提示 -->
+            <TextView
+                android:id="@+id/tvSnap"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:textColor="#FFD54F"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:gravity="center"
+                android:visibility="gone"
+                android:layout_marginBottom="4dp" />
+        </LinearLayout>
+
+        <!-- 俯仰行 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:layout_marginBottom="2dp"
+            android:paddingHorizontal="8dp">
+
+            <TextView
+                android:id="@+id/labelPitch"
+                android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:text="@string/label_pitch"
+                android:textColor="#FF9800"
+                android:textSize="13sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvPitch"
+                android:layout_width="0dp"
+                android:layout_height="36dp"
+                android:layout_weight="1"
+                android:text="+0.0°"
+                android:textColor="#FFFFFF"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:gravity="center"
+                android:background="@drawable/angle_bg_pitch" />
+
+            <TextView
+                android:id="@+id/tvDirectionPitch"
+                android:layout_width="70dp"
+                android:layout_height="wrap_content"
+                android:text="@string/direction_level"
+                android:textColor="#FF9800"
+                android:textSize="12sp"
+                android:gravity="end" />
+        </LinearLayout>
+
+        <!-- 横滚行 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:layout_marginBottom="2dp"
+            android:paddingHorizontal="8dp">
+
+            <TextView
+                android:id="@+id/labelRoll"
+                android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:text="@string/label_roll"
+                android:textColor="#4CAF50"
+                android:textSize="13sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvRoll"
+                android:layout_width="0dp"
+                android:layout_height="36dp"
+                android:layout_weight="1"
+                android:text="+0.0°"
+                android:textColor="#FFFFFF"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:gravity="center"
+                android:background="@drawable/angle_bg_roll" />
+
+            <TextView
+                android:id="@+id/tvDirectionRoll"
+                android:layout_width="70dp"
+                android:layout_height="wrap_content"
+                android:text="@string/direction_level"
+                android:textColor="#4CAF50"
+                android:textSize="12sp"
+                android:gravity="end" />
+        </LinearLayout>
+
+        <!-- Delta -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_marginTop="4dp">
+
+            <TextView
+                android:id="@+id/tvDeltaLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/label_delta_prefix"
+                android:textColor="#66FFFFFF"
+                android:textSize="11sp"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/tvDelta"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Δ 0.0°"
+                android:textColor="#FF9800"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:visibility="gone" />
+        </LinearLayout>
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
