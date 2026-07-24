@@ -10,6 +10,7 @@ import android.graphics.Shader
 import android.util.AttributeSet
 import android.view.View
 import android.view.animation.DecelerateInterpolator
+import kotlin.math.abs
 import kotlin.math.cos
 import kotlin.math.sin
 import kotlin.math.sqrt
@@ -20,16 +21,29 @@ class InclinometerView @JvmOverloads constructor(
     defStyleAttr: Int = 0
 ) : View(context, attrs, defStyleAttr) {
 
+    private var lastDrawnPitch = Float.MAX_VALUE
+    private var lastDrawnRoll = Float.MAX_VALUE
+
     var pitchAngle: Float = 0f
         set(value) {
-            field = value.coerceIn(-90f, 90f)
-            invalidate()
+            val clamped = value.coerceIn(-90f, 90f)
+            if (abs(clamped - field) > 0.02f) {
+                field = clamped
+                invalidate()
+            } else {
+                field = clamped
+            }
         }
 
     var rollAngle: Float = 0f
         set(value) {
-            field = value.coerceIn(-90f, 90f)
-            invalidate()
+            val clamped = value.coerceIn(-90f, 90f)
+            if (abs(clamped - field) > 0.02f) {
+                field = clamped
+                invalidate()
+            } else {
+                field = clamped
+            }
         }
 
     var isAtLevel: Boolean = false

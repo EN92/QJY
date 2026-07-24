@@ -41,8 +41,7 @@
                 android:textSize="12sp"
                 android:layout_marginEnd="8dp"
                 android:maxLines="1"
-                android:ellipsize="end"
-                android:maxWidth="120dp" />
+                android:ellipsize="end" />
 
             <Button
                 android:id="@+id/btnCalibrate"
@@ -311,23 +310,25 @@
             <TextView
                 android:id="@+id/tvPitch"
                 android:layout_width="0dp"
-                android:layout_height="36dp"
+                android:layout_height="40dp"
                 android:layout_weight="1"
                 android:text="+0.0°"
                 android:textColor="#FFFFFF"
                 android:textSize="16sp"
                 android:textStyle="bold"
                 android:gravity="center"
+                android:paddingHorizontal="8dp"
                 android:background="@drawable/angle_bg_pitch" />
 
             <TextView
                 android:id="@+id/tvDirectionPitch"
-                android:layout_width="70dp"
+                android:layout_width="80dp"
                 android:layout_height="wrap_content"
                 android:text="@string/direction_level"
                 android:textColor="#FF9800"
                 android:textSize="12sp"
-                android:gravity="end" />
+                android:gravity="end"
+                android:lines="1" />
         </LinearLayout>
 
         <!-- 横滚行 -->
@@ -350,23 +351,25 @@
             <TextView
                 android:id="@+id/tvRoll"
                 android:layout_width="0dp"
-                android:layout_height="36dp"
+                android:layout_height="40dp"
                 android:layout_weight="1"
                 android:text="+0.0°"
                 android:textColor="#FFFFFF"
                 android:textSize="16sp"
                 android:textStyle="bold"
                 android:gravity="center"
+                android:paddingHorizontal="8dp"
                 android:background="@drawable/angle_bg_roll" />
 
             <TextView
                 android:id="@+id/tvDirectionRoll"
-                android:layout_width="70dp"
+                android:layout_width="80dp"
                 android:layout_height="wrap_content"
                 android:text="@string/direction_level"
                 android:textColor="#4CAF50"
                 android:textSize="12sp"
-                android:gravity="end" />
+                android:gravity="end"
+                android:lines="1" />
         </LinearLayout>
 
         <!-- Delta -->

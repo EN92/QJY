@@ -83,6 +83,12 @@ class MainActivity : AppCompatActivity(), SensorEventListener, TextToSpeech.OnIn
     // 屏幕方向锁定
     private var isOrientationLocked = false
 
+    // 显示防抖
+    private var lastDisplayPitch = 0f
+    private var lastDisplayRoll = 0f
+    private var lastDisplayTilt = 0f
+    private val displayThreshold = 0.08f
+
     // 缓存
     private val dateFormat = java.text.SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault())
 
@@ -597,8 +603,21 @@ class MainActivity : AppCompatActivity(), SensorEventListener, TextToSpeech.OnIn
         val displayRoll = if (hasDelta) srcRoll - deltaRoll else srcRoll
         val displayTilt = sqrt(displayPitch * displayPitch + displayRoll * displayRoll)
 
-        binding.inclinometerView.pitchAngle = displayPitch
-        binding.inclinometerView.rollAngle = displayRoll
+        val dp = displayPitch - lastDisplayPitch
+        val dr = displayRoll - lastDisplayRoll
+        val dt = displayTilt - lastDisplayTilt
+        val changed = abs(dp) > displayThreshold || abs(dr) > displayThreshold || abs(dt) > displayThreshold
+
+        if (changed) {
+            lastDisplayPitch = displayPitch
+            lastDisplayRoll = displayRoll
+            lastDisplayTilt = displayTilt
+            binding.inclinometerView.pitchAngle = displayPitch
+            binding.inclinometerView.rollAngle = displayRoll
+        } else {
+            binding.inclinometerView.pitchAngle = displayPitch
+            binding.inclinometerView.rollAngle = displayRoll
+        }
 
         val pitchSign = if (displayPitch >= 0) "+" else ""
         val rollSign = if (displayRoll >= 0) "+" else ""
